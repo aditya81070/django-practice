@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Renew: {{ bookinst.book.title }}</h1>
+<p>Borrower:{{ bookinst.borrower }}</p>
+<p {% if bookinst.is_overdue %} class="text-danger"{% endif %}>Due date: {{ bookinst.due_back }}</p>
+<form action="" method="post" class="form-inline">
+{% csrf_token %}
+    <div class="from-group">
+        <label for="{{ form.renewal_date.id_for_label }}">Renewal Date:</label>
+        {% if form.renewal_date.errors %}
+            <ul>
+            {% for error in form.renewal_date.errors %}
+            <li class="text-danger">{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        <input type="text" name="{{ form.renewal_date.html_name }}" id="{{ form.renewal_date.id_for_label }}" >
+        <span class="bg-info">{{ form.renewal_date.help_text }}</span>
+    </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+{% endblock %}

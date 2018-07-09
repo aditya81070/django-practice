@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post" id="aditya">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+            <input  id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" class="form-control">
+            {% if form.title.errors %}
+            <ul>
+            {% for error in form.title.errors %}
+            <li class="text-danger">{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.author.id_for_label }}">{{ form.author.label }}</label>
+            <select name="{{ form.author.html_name }}" id="{{ form.author.id_for_label }}" class="form-control">
+                {% for a in form.author %}
+                    {{ a }}
+                {% endfor %}
+            </select>
+            {% if form.title.errors %}
+            <ul>
+            {% for error in form.author.errors %}
+            <li class="text-danger">{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.summary.id_for_label }}">{{ form.summary.label }}</label>
+            <textarea name="{{ form.summary.html_name }}" id="{{ form.summary.id_for_label }}" form="aditya" cols="30" rows="10" class="form-control"></textarea>
+
+            {% if form.summary.errors %}
+            <ul>
+            {% for error in form.summary.errors %}
+            <li class="text-danger">{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.isbn.id_for_label }}">{{ form.isbn.label }}</label>
+            <input  id="{{ form.isbn.id_for_label }}" name="{{ form.isbn.html_name }}" class="form-control" maxlength="13">
+            {% if form.isbn.errors %}
+            <ul>
+            {% for error in form.isbn.errors %}
+            <li class="text-danger">{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.genre.id_for_label }}">{{ form.genre.label }}</label>
+        <span class="text-primary">Hold ctrl key to select more than one choice</span>
+            <select name="{{ form.genre.html_name }}" id="{{ form.genre.id_for_label }}" class="form-control" multiple>
+                {% for g in form.genre %}
+                    {{ g }}
+                {% endfor %}
+            </select>
+
+            {% if form.isbn.errors %}
+            <ul>
+            {% for error in form.isbn.errors %}
+            <li class="text-danger">{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>l
+
+        <input type="submit" class="btn btn-primary">
+    </form>
+{% endblock %}

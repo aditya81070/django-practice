@@ -4,6 +4,6 @@
     <p>Are you sure you want to delete the Book: <span class="display3">{{ book }}</span></p>
     <form action="" method="post">
     {% csrf_token %}
-        <input type="submit" class="btn btn-default">
+        <input type="submit" class="btn btn-danger">
     </form>
 {% endblock %}

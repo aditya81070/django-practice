@@ -59,7 +59,7 @@ class BookInstance(models.Model):
     Model representing a specific copy of a book (ie that can be borrowed from the library).
     """
     id=models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
-    book= models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
+    book= models.ForeignKey('Book', on_delete=models.CASCADE, null=True)
     imprint= models.CharField(max_length=200)
     due_back=models.DateField(null=True, blank=True)
     LOAN_STATUS=(
@@ -106,4 +106,4 @@ class Author(models.Model):
         return  reverse('author-detail',args=[str(self.id)])
 
     def __str__(self):
-        return '{0} {1}'.format(self.last_name, self.first_name)
+        return '{0}, {1}'.format(self.last_name, self.first_name)

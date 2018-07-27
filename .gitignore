@@ -1,0 +1,9 @@
+# Text backup files
+*.bak
+#database
+*.sqlite3
+
+#IDE
+.idea/
+__pycache__/
+

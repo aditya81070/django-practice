@@ -4,6 +4,6 @@
 *.sqlite3
 
 #IDE
-.idea/
+.idea/*.xml
 __pycache__/
 
